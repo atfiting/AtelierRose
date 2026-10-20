@@ -264,6 +264,9 @@ footer{background:#1c1417;color:#d5c8cc;padding:60px 0 36px;position:relative;z-
 .form-submit:disabled{opacity:.6;cursor:wait}
 .form-note{text-align:center;font-size:.8rem;color:var(--muted);margin-top:22px;font-weight:300}
 .form-note b{color:var(--text);font-weight:500}
+.form-consent{display:flex;align-items:flex-start;gap:10px;font-size:.82rem;font-weight:300;margin-top:16px;cursor:pointer;line-height:1.5}
+.form-consent input{width:18px;height:18px;accent-color:var(--accent);margin-top:2px;flex-shrink:0;cursor:pointer}
+.form-consent a{color:var(--accent);text-decoration:underline}
 .two-cols{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-bottom:50px}
 .info-card{background:#fff;border:1px solid var(--border);border-radius:26px;padding:44px 38px;transition:.5s;position:relative}
 .info-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);border-color:transparent}
@@ -419,6 +422,9 @@ footer{background:#1c1417;color:#d5c8cc;padding:60px 0 36px;position:relative;z-
 .toast.show{transform:translateX(-50%) translateY(0)}
 .toast.success{background:var(--success)}
 .toast.error{background:var(--error)}
+
+/* БЕЙДЖ НОВЫХ ЗАЯВОК В МЕНЮ */
+#adminBadge{display:none;background:var(--error);color:#fff;font-size:.6rem;padding:2px 7px;border-radius:20px;margin-left:4px;font-weight:700;line-height:1.3;vertical-align:middle}
 
 @media (max-width:980px){
   :root{--header-h:68px}
@@ -638,7 +644,7 @@ footer{background:#1c1417;color:#d5c8cc;padding:60px 0 36px;position:relative;z-
         <li><a href="#delivery" data-nav>Доставка</a></li>
         <li><a href="#care" data-nav>Уход</a></li>
         <li><a href="#chat" data-nav>Чат</a></li>
-        <li id="navAdminLi" style="display:none;"><a href="#admin" data-nav>👑 Админ</a></li>
+        <li id="navAdminLi" style="display:none;"><a href="#admin" data-nav>👑 Админ <span id="adminBadge">0</span></a></li>
       </ul>
     </nav>
     <div class="nav-actions" id="navActions">
@@ -666,7 +672,7 @@ footer{background:#1c1417;color:#d5c8cc;padding:60px 0 36px;position:relative;z-
     <li><a href="#delivery" data-nav>Доставка</a></li>
     <li><a href="#care" data-nav>Уход</a></li>
     <li><a href="#chat" data-nav>Чат</a></li>
-    <li id="navAdminLiMobile" style="display:none;"><a href="#admin" data-nav>👑 Админ</a></li>
+    <li id="navAdminLiMobile" style="display:none;"><a href="#admin" data-nav>👑 Админ <span id="adminBadgeMobile">0</span></a></li>
   </ul>
   <a href="#order" class="mobile-cta">Оставить заявку</a>
   <button class="mobile-auth" id="mobileLoginBtn">Войти / Регистрация</button>
@@ -798,7 +804,7 @@ footer{background:#1c1417;color:#d5c8cc;padding:60px 0 36px;position:relative;z-
       <div class="cta-box reveal">
         <div class="eyebrow">Готовы заказать?</div>
         <h2>Соберём букет<br>специально для вас</h2>
-        <p>Оставьте заявку на сайте — свяжемся с вами в течение 3 часов. Предоплата 50% для запуска заказа.</p>
+        <p>Оставьте заявку на сайте — я свяжусь с вами лично. Предоплата 50% для запуска заказа.</p>
         <a href="#order" class="btn btn-white">Оставить заявку →</a>
       </div>
     </div>
@@ -829,36 +835,55 @@ footer{background:#1c1417;color:#d5c8cc;padding:60px 0 36px;position:relative;z-
 </main>
 
 <main id="page-order" class="page">
-  <section class="inner-hero"><div class="container"><a href="#home" class="back-link" data-nav>← На главную</a><div class="eyebrow">Заказ букета</div><h1>Оставить заявку</h1><div class="divider center"></div><p>Заполните форму — мы свяжемся с вами в течение 3 часов.</p></div></section>
+  <section class="inner-hero"><div class="container"><a href="#home" class="back-link" data-nav>← На главную</a><div class="eyebrow">Заказ букета</div><h1>Оставить заявку</h1><div class="divider center"></div><p>Заполните форму — заявка сразу придёт мастеру.</p></div></section>
   <section style="padding-top:20px;"><div class="container">
     <div class="deadline-banner reveal"><div class="deadline-icon">⏳</div><div class="deadline-text"><h3>Желательно заказывать за 2–3 недели до события</h3><p>Это не обязательное условие, но очень желательное — так мы успеем закупить материалы и собрать букет без спешки.</p></div></div>
     <div class="steps">
-      <div class="step reveal"><div class="step-num">01</div><h3>Оставляете заявку</h3><p>Заполняете форму — мы получаем её сразу.</p></div>
-      <div class="step reveal"><div class="step-num">02</div><h3>Связываемся за 3 часа</h3><p>Обсуждаем количество роз, оттенок, декор, дату.</p></div>
+      <div class="step reveal"><div class="step-num">01</div><h3>Оставляете заявку</h3><p>Заполняете форму — заявка сразу приходит мастеру.</p></div>
+      <div class="step reveal"><div class="step-num">02</div><h3>Я свяжусь с вами</h3><p>Позвоню или напишу в мессенджер, чтобы обсудить розы, оттенок, декор и дату.</p></div>
       <div class="step reveal"><div class="step-num">03</div><h3>Подтверждаете заказ</h3><p>Согласуем стоимость и детали. Вносите <b>предоплату 50%</b> — запускаем в работу.</p></div>
       <div class="step reveal"><div class="step-num">04</div><h3>Получаете букет</h3><p>Готовим за 5–7 дней. Доставка по краю бесплатно. Остаток — при получении.</p></div>
     </div>
     <div class="contacts-title reveal"><div class="eyebrow">Заявка на букет</div><h2>Заполните форму</h2><div class="divider center"></div></div>
-    <form class="form-wrapper reveal" id="orderForm" action="https://formsubmit.co/atelier.rose@mail.ru" method="POST">
-      <input type="hidden" name="_subject" value="🌹 Новая заявка — ATELIER ROSE">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="true">
-      <input type="text" name="_honey" style="display:none">
+    <form class="form-wrapper reveal" id="orderForm">
       <div class="form-row">
-        <label class="form-field"><span>Ваше имя <b class="req">*</b></span><input type="text" name="Имя" id="orderName" placeholder="Как к вам обращаться" required></label>
-        <label class="form-field"><span>Телефон <b class="req">*</b></span><input type="tel" name="Телефон" id="orderPhone" placeholder="+7 ___ ___-__-__" required></label>
+        <label class="form-field"><span>Ваше имя <b class="req">*</b></span><input type="text" id="orderName" placeholder="Как к вам обращаться" required></label>
+        <label class="form-field"><span>Телефон <b class="req">*</b></span><input type="tel" id="orderPhone" placeholder="+7 ___ ___-__-__" required></label>
       </div>
       <div class="form-row">
-        <label class="form-field"><span>Город <b class="req">*</b></span><input type="text" name="Город" id="orderCity" placeholder="Соликамск, Березники..." required></label>
-        <label class="form-field"><span>К какой дате нужен букет</span><input type="text" name="Дата" id="orderDate" placeholder="например, 8 марта"></label>
+        <label class="form-field"><span>Город <b class="req">*</b></span><input type="text" id="orderCity" placeholder="Соликамск, Березники..." required></label>
+        <label class="form-field"><span>Способ связи</span>
+          <select id="orderContact">
+            <option value="Звонок">📞 Звонок</option>
+            <option value="WhatsApp">💬 WhatsApp</option>
+            <option value="Telegram">✈️ Telegram</option>
+            <option value="VK">🔵 ВКонтакте</option>
+          </select>
+        </label>
       </div>
       <div class="form-row">
-        <label class="form-field"><span>Количество роз</span><input type="text" name="Количество" id="orderQty" placeholder="7 или «посоветуйте»"></label>
-        <label class="form-field"><span>Оттенок / пожелания</span><input type="text" name="Оттенок" id="orderColor" placeholder="пудровый, бордо, белый..."></label>
+        <label class="form-field"><span>К какой дате нужен букет</span><input type="text" id="orderDate" placeholder="например, 8 марта"></label>
+        <label class="form-field"><span>Примерный бюджет</span>
+          <select id="orderBudget">
+            <option value="Не знаю">Пока не знаю</option>
+            <option value="до 1500">До 1500 ₽</option>
+            <option value="1500–2500">1500–2500 ₽</option>
+            <option value="2500–4000">2500–4000 ₽</option>
+            <option value="4000+">4000+ ₽</option>
+          </select>
+        </label>
       </div>
-      <div class="form-row"><label class="form-field full"><span>Комментарий</span><textarea name="Комментарий" id="orderComment" placeholder="Повод, особые пожелания"></textarea></label></div>
+      <div class="form-row">
+        <label class="form-field"><span>Количество роз</span><input type="text" id="orderQty" placeholder="7 или «посоветуйте»"></label>
+        <label class="form-field"><span>Оттенок / пожелания</span><input type="text" id="orderColor" placeholder="пудровый, бордо, белый..."></label>
+      </div>
+      <div class="form-row"><label class="form-field full"><span>Комментарий</span><textarea id="orderComment" placeholder="Повод, особые пожелания"></textarea></label></div>
+      <label class="form-consent">
+        <input type="checkbox" id="orderConsent" required>
+        <span>Я согласен на обработку персональных данных и с <a href="#privacy" data-nav>политикой конфиденциальности</a></span>
+      </label>
       <button type="submit" class="form-submit" id="orderSubmit">Отправить заявку</button>
-      <p class="form-note">Свяжемся с вами <b>в течение 3 часов</b> по указанному телефону</p>
+      <p class="form-note">Заявка сразу придёт мастеру — <b>я свяжусь с вами лично</b> по указанному телефону</p>
       <p class="form-note" style="margin-top:8px;">
         💳 После согласования деталей — <b>предоплата 50%</b>, остаток при получении.
       </p>
@@ -932,10 +957,41 @@ footer{background:#1c1417;color:#d5c8cc;padding:60px 0 36px;position:relative;z-
   <section class="inner-hero"><div class="container"><a href="#home" class="back-link" data-nav>← На главную</a><div class="eyebrow">Обратная связь</div><h1>Чат с нами</h1><div class="divider center"></div><p>Задайте вопрос напрямую — ответим при первой возможности</p></div></section>
   <section style="padding-top:20px;"><div class="container">
     <div class="chat-wrapper">
-      <div class="chat-header"><div class="ava">🌹</div><div><b>ATELIER ROSE</b><span>обычно отвечаем в течение дня</span></div></div>
+      <div class="chat-header"><div class="ava">🌹</div><div><b>ATELIER ROSE</b><span>отвечаю лично при первой возможности</span></div></div>
       <div id="chatContent">
         <div class="chat-locked"><h3>Войдите, чтобы написать</h3><p>Нужна бесплатная регистрация — 30 секунд</p><button class="btn btn-primary" id="chatLoginBtn">Войти / Регистрация</button></div>
       </div>
+    </div>
+  </div></section>
+</main>
+
+<main id="page-privacy" class="page">
+  <section class="inner-hero"><div class="container"><a href="#home" class="back-link" data-nav>← На главную</a><div class="eyebrow">Документы</div><h1>Политика конфиденциальности</h1><div class="divider center"></div></div></section>
+  <section style="padding-top:20px;"><div class="container" style="max-width:820px;">
+    <div class="info-card reveal" style="padding:44px 42px;">
+      <h2 style="font-size:1.5rem;margin-bottom:16px;">1. Общие положения</h2>
+      <p style="font-size:.93rem;color:var(--muted);font-weight:300;line-height:1.8;margin-bottom:24px;">Настоящая политика описывает, как ATELIER ROSE собирает, использует и защищает персональные данные, которые вы оставляете на сайте.</p>
+      <h2 style="font-size:1.5rem;margin-bottom:16px;">2. Какие данные мы собираем</h2>
+      <p style="font-size:.93rem;color:var(--muted);font-weight:300;line-height:1.8;margin-bottom:24px;">Имя, телефон, город, email (при регистрации), а также пожелания к заказу, которые вы указываете в форме. Данные используются только для связи по вашему заказу.</p>
+      <h2 style="font-size:1.5rem;margin-bottom:16px;">3. Как хранятся данные</h2>
+      <p style="font-size:.93rem;color:var(--muted);font-weight:300;line-height:1.8;margin-bottom:24px;">Данные хранятся в защищённой базе Firebase (Google) и доступны только мастеру ATELIER ROSE. Мы не передаём их третьим лицам.</p>
+      <h2 style="font-size:1.5rem;margin-bottom:16px;">4. Ваши права</h2>
+      <p style="font-size:.93rem;color:var(--muted);font-weight:300;line-height:1.8;margin-bottom:24px;">Вы можете запросить удаление своих данных, написав в чат на сайте или на почту <b>atelier.rose@mail.ru</b>. Мы удалим их в течение 7 дней.</p>
+      <h2 style="font-size:1.5rem;margin-bottom:16px;">5. Cookies</h2>
+      <p style="font-size:.93rem;color:var(--muted);font-weight:300;line-height:1.8;">Сайт использует cookies для авторизации и работы чата. Продолжая пользоваться сайтом, вы соглашаетесь с этим.</p>
+    </div>
+  </div></section>
+</main>
+
+<main id="page-thanks" class="page">
+  <section class="inner-hero"><div class="container">
+    <div class="eyebrow">Заявка отправлена</div>
+    <h1>Спасибо! 🌹</h1>
+    <div class="divider center"></div>
+    <p>Ваша заявка уже у мастера. Я свяжусь с вами лично по указанному телефону.</p>
+    <div style="margin-top:36px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="#home" class="btn btn-primary" data-nav>На главную</a>
+      <a href="#ready" class="btn btn-ghost" data-nav>Готовые букеты</a>
     </div>
   </div></section>
 </main>
@@ -1013,10 +1069,10 @@ footer{background:#1c1417;color:#d5c8cc;padding:60px 0 36px;position:relative;z-
         <p style="margin-top:10px;color:#f5d78a;font-weight:500;">💳 Предоплата 50% для запуска заказа</p>
       </div>
       <div><h4>Разделы</h4><ul><li><a href="#ready" data-nav>Готовые букеты</a></li><li><a href="#gallery" data-nav>Портфолио</a></li><li><a href="#about" data-nav>О мастерах</a></li><li><a href="#reviews" data-nav>Отзывы</a></li></ul></div>
-      <div><h4>Информация</h4><ul><li><a href="#order" data-nav>Как заказать</a></li><li><a href="#delivery" data-nav>Доставка и оплата</a></li><li><a href="#care" data-nav>Уход</a></li></ul></div>
-      <div><h4>Общение</h4><ul><li><a href="#chat" data-nav>Чат с нами</a></li><li><a href="#reviews" data-nav>Оставить отзыв</a></li><li style="color:#a89ba0;font-size:.82rem;margin-top:6px;">Отвечаем в течение<br>3 часов</li></ul></div>
+      <div><h4>Информация</h4><ul><li><a href="#order" data-nav>Как заказать</a></li><li><a href="#delivery" data-nav>Доставка и оплата</a></li><li><a href="#care" data-nav>Уход</a></li><li><a href="#privacy" data-nav>Политика конфиденциальности</a></li></ul></div>
+      <div><h4>Общение</h4><ul><li><a href="#chat" data-nav>Чат с нами</a></li><li><a href="#reviews" data-nav>Оставить отзыв</a></li><li style="color:#a89ba0;font-size:.82rem;margin-top:6px;">Отвечаю лично<br>по каждой заявке</li></ul></div>
     </div>
-    <div class="foot-bottom"><span>© 2026 ATELIER ROSE</span><span>Заказ — только через форму на сайте</span></div>
+    <div class="foot-bottom"><span>© 2026 ATELIER ROSE</span><span>Заказ — через форму на сайте или в чате</span></div>
   </div>
 </footer>
 
@@ -1080,7 +1136,8 @@ function toast(msg, type='') {
 
 const pages = {
   home: $('#page-home'), gallery: $('#page-gallery'), ready: $('#page-ready'), order: $('#page-order'),
-  delivery: $('#page-delivery'), care: $('#page-care'), chat: $('#page-chat'), admin: $('#page-admin')
+  delivery: $('#page-delivery'), care: $('#page-care'), chat: $('#page-chat'), admin: $('#page-admin'),
+  privacy: $('#page-privacy'), thanks: $('#page-thanks')
 };
 
 function showPage(name, anchor) {
@@ -1115,6 +1172,8 @@ function route() {
   else if (h === '#delivery') showPage('delivery');
   else if (h === '#care') showPage('care');
   else if (h === '#chat') showPage('chat');
+  else if (h === '#privacy') showPage('privacy');
+  else if (h === '#thanks') showPage('thanks');
   else if (h === '#admin') {
     if (currentUser && currentUser.email === ADMIN_EMAIL) showPage('admin');
     else { toast('Доступ только для админа', 'error'); showPage('home'); }
@@ -1295,8 +1354,6 @@ function renderReadyBouquets() {
 
   if (homeGrid) homeGrid.innerHTML = html;
   if (fullGrid) fullGrid.innerHTML = html;
-  if (homeGrid) homeGrid.querySelectorAll('a[data-nav]').forEach(a => a.addEventListener('click', () => {}));
-  if (fullGrid) fullGrid.querySelectorAll('a[data-nav]').forEach(a => a.addEventListener('click', () => {}));
 }
 
 function renderAdminBouquets() {
@@ -1576,9 +1633,11 @@ function renderChat() {
   input.addEventListener('keydown', e => { if (e.key === 'Enter') sendMsg(); });
 }
 
+// ============ ФОРМА ЗАЯВКИ ============
 const orderForm = $('#orderForm');
 if (orderForm) {
-  orderForm.addEventListener('submit', async () => {
+  orderForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
     const btn = $('#orderSubmit');
     btn.disabled = true; btn.textContent = 'Отправляю...';
     try {
@@ -1586,15 +1645,25 @@ if (orderForm) {
         name: $('#orderName').value.trim(),
         phone: $('#orderPhone').value.trim(),
         city: $('#orderCity').value.trim(),
+        contact: $('#orderContact').value,
         date: $('#orderDate').value.trim(),
+        budget: $('#orderBudget').value,
         qty: $('#orderQty').value.trim(),
         color: $('#orderColor').value.trim(),
         comment: $('#orderComment').value.trim(),
+        consent: $('#orderConsent').checked,
         createdAt: serverTimestamp(),
         userId: currentUser ? currentUser.uid : null
       });
+      toast('Заявка отправлена! Я свяжусь с вами лично 🌹', 'success');
+      orderForm.reset();
+      btn.textContent = 'Отправлено ✓';
+      setTimeout(() => { btn.textContent = 'Отправить заявку'; btn.disabled = false; }, 3000);
     } catch (err) {
       console.error('Firestore save error:', err);
+      toast('Ошибка отправки. Напишите мне в чат или позвоните.', 'error');
+      btn.textContent = 'Отправить заявку';
+      btn.disabled = false;
     }
   });
 }
@@ -1605,6 +1674,8 @@ let adminOrdersUnsub = null;
 let selectedChatUserId = null;
 let currentChatUnsub = null;
 let allAdminMessages = [];
+let lastOrderCount = 0;
+let ordersInitialized = false;
 
 $$('.admin-tab').forEach(tab => tab.addEventListener('click', () => {
   $$('.admin-tab').forEach(t => t.classList.remove('active'));
@@ -1753,6 +1824,24 @@ function loadAdminOrders() {
     const orders = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     renderAdminOrders(orders);
     if ($('#statOrders')) $('#statOrders').textContent = orders.length;
+    const badge = $('#adminBadge');
+    const badgeMobile = $('#adminBadgeMobile');
+    if (orders.length > 0) {
+      if (badge) { badge.style.display = 'inline-block'; badge.textContent = orders.length; }
+      if (badgeMobile) { badgeMobile.style.display = 'inline-block'; badgeMobile.textContent = orders.length; }
+    } else {
+      if (badge) badge.style.display = 'none';
+      if (badgeMobile) badgeMobile.style.display = 'none';
+    }
+    if (ordersInitialized && orders.length > lastOrderCount && isAdmin) {
+      try {
+        const audio = new Audio('https://actions.google.com/sounds/v1/alarms/beep_short.ogg');
+        audio.play().catch(()=>{});
+      } catch(e){}
+      toast('🔔 Новая заявка!', 'success');
+    }
+    lastOrderCount = orders.length;
+    ordersInitialized = true;
   }, (err) => {
     console.error('Orders load error:', err);
     if ($('#adminOrders')) $('#adminOrders').innerHTML = '<div class="admin-empty" style="color:var(--error);">Ошибка загрузки заявок.</div>';
@@ -1775,8 +1864,10 @@ function renderAdminOrders(orders) {
       </div>
       <div class="admin-order-info">
         <div><b>Телефон</b>${(o.phone || '—').replace(/</g,'&lt;')}</div>
+        <div><b>Способ связи</b>${(o.contact || '—').replace(/</g,'&lt;')}</div>
         <div><b>Город</b>${(o.city || '—').replace(/</g,'&lt;')}</div>
         <div><b>Дата события</b>${(o.date || '—').replace(/</g,'&lt;')}</div>
+        <div><b>Бюджет</b>${(o.budget || '—').replace(/</g,'&lt;')}</div>
         <div><b>Количество роз</b>${(o.qty || '—').replace(/</g,'&lt;')}</div>
         <div><b>Оттенок</b>${(o.color || '—').replace(/</g,'&lt;')}</div>
         <div><b>Предоплата</b>50% · остаток при получении</div>
