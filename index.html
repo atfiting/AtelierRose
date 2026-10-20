@@ -74,6 +74,7 @@ nav a.active::after{width:100%}
 .marquee-track{display:flex;width:max-content;animation:marquee 42s linear infinite}
 .marquee-item{display:inline-flex;align-items:center;gap:26px;padding:0 26px;font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;font-weight:500;white-space:nowrap}
 .marquee-item::after{content:'✦';color:var(--accent-2);font-style:normal;font-size:1rem}
+.marquee-item.marquee-accent{color:#f5d78a;font-weight:700;letter-spacing:.04em}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .hero{padding:70px 0 90px;position:relative;overflow:hidden}
 .hero-deco{position:absolute;border-radius:50%;pointer-events:none;filter:blur(60px);opacity:.5}
@@ -696,13 +697,13 @@ footer{background:#1c1417;color:#d5c8cc;padding:60px 0 36px;position:relative;z-
       </div>
     </div>
     <div class="container">
-      <div class="hero-note reveal">⏳ Рекомендую заказывать букет <b>за 2–3 недели до события</b> — так я успею закупить нужные ленты и спокойно собрать его без спешки.</div>
+      <div class="hero-note reveal">⏳ Рекомендую заказывать букет <b>за 2–3 недели до события</b> — так я успею закупить нужные ленты и спокойно собрать его без спешки. <b>Предоплата 50%</b> для запуска заказа.</div>
     </div>
   </section>
 
   <div class="marquee"><div class="marquee-track">
-    <span class="marquee-item">100% ручная работа</span><span class="marquee-item">не вянут годами</span><span class="marquee-item">бесплатная доставка</span><span class="marquee-item">75 ₽ за розу</span><span class="marquee-item">5–7 дней на изготовление</span>
-    <span class="marquee-item">100% ручная работа</span><span class="marquee-item">не вянут годами</span><span class="marquee-item">бесплатная доставка</span><span class="marquee-item">75 ₽ за розу</span><span class="marquee-item">5–7 дней на изготовление</span>
+    <span class="marquee-item">100% ручная работа</span><span class="marquee-item">не вянут годами</span><span class="marquee-item marquee-accent">предоплата 50%</span><span class="marquee-item">бесплатная доставка</span><span class="marquee-item">75 ₽ за розу</span><span class="marquee-item">5–7 дней на изготовление</span>
+    <span class="marquee-item">100% ручная работа</span><span class="marquee-item">не вянут годами</span><span class="marquee-item marquee-accent">предоплата 50%</span><span class="marquee-item">бесплатная доставка</span><span class="marquee-item">75 ₽ за розу</span><span class="marquee-item">5–7 дней на изготовление</span>
   </div></div>
 
   <section class="section-alt">
@@ -725,6 +726,7 @@ footer{background:#1c1417;color:#d5c8cc;padding:60px 0 36px;position:relative;z-
         <h2>Можно забрать прямо сейчас</h2>
         <div class="divider center"></div>
         <p>Букеты, которые уже готовы — можно заказать сегодня без ожидания.</p>
+        <p style="margin-top:10px;font-size:.88rem;color:var(--accent);font-weight:500;">💳 Бронирование — предоплата 50%</p>
       </div>
       <div id="readyGrid" class="ready-grid"></div>
     </div>
@@ -796,7 +798,7 @@ footer{background:#1c1417;color:#d5c8cc;padding:60px 0 36px;position:relative;z-
       <div class="cta-box reveal">
         <div class="eyebrow">Готовы заказать?</div>
         <h2>Соберём букет<br>специально для вас</h2>
-        <p>Оставьте заявку на сайте — свяжемся с вами в течение 3 часов.</p>
+        <p>Оставьте заявку на сайте — свяжемся с вами в течение 3 часов. Предоплата 50% для запуска заказа.</p>
         <a href="#order" class="btn btn-white">Оставить заявку →</a>
       </div>
     </div>
@@ -820,7 +822,7 @@ footer{background:#1c1417;color:#d5c8cc;padding:60px 0 36px;position:relative;z-
 </main>
 
 <main id="page-ready" class="page">
-  <section class="inner-hero"><div class="container"><a href="#home" class="back-link" data-nav>← На главную</a><div class="eyebrow">Готовые букеты</div><h1>Уже готовы к отправке</h1><div class="divider center"></div><p>Букеты, которые созданы и ждут своего хозяина — можно забрать сегодня.</p></div></section>
+  <section class="inner-hero"><div class="container"><a href="#home" class="back-link" data-nav>← На главную</a><div class="eyebrow">Готовые букеты</div><h1>Уже готовы к отправке</h1><div class="divider center"></div><p>Букеты, которые созданы и ждут своего хозяина — можно забрать сегодня.</p><p style="margin-top:10px;font-size:.9rem;color:var(--accent);font-weight:500;">💳 Бронирование — предоплата 50%, остаток при получении</p></div></section>
   <section style="padding-top:20px;"><div class="container">
     <div id="readyGridFull" class="ready-grid"></div>
   </div></section>
@@ -833,8 +835,8 @@ footer{background:#1c1417;color:#d5c8cc;padding:60px 0 36px;position:relative;z-
     <div class="steps">
       <div class="step reveal"><div class="step-num">01</div><h3>Оставляете заявку</h3><p>Заполняете форму — мы получаем её сразу.</p></div>
       <div class="step reveal"><div class="step-num">02</div><h3>Связываемся за 3 часа</h3><p>Обсуждаем количество роз, оттенок, декор, дату.</p></div>
-      <div class="step reveal"><div class="step-num">03</div><h3>Подтверждаете заказ</h3><p>Согласуем стоимость и детали заказа.</p></div>
-      <div class="step reveal"><div class="step-num">04</div><h3>Получаете букет</h3><p>Готовим за 5–7 дней. Доставка по краю бесплатно.</p></div>
+      <div class="step reveal"><div class="step-num">03</div><h3>Подтверждаете заказ</h3><p>Согласуем стоимость и детали. Вносите <b>предоплату 50%</b> — запускаем в работу.</p></div>
+      <div class="step reveal"><div class="step-num">04</div><h3>Получаете букет</h3><p>Готовим за 5–7 дней. Доставка по краю бесплатно. Остаток — при получении.</p></div>
     </div>
     <div class="contacts-title reveal"><div class="eyebrow">Заявка на букет</div><h2>Заполните форму</h2><div class="divider center"></div></div>
     <form class="form-wrapper reveal" id="orderForm" action="https://formsubmit.co/atelier.rose@mail.ru" method="POST">
@@ -857,8 +859,11 @@ footer{background:#1c1417;color:#d5c8cc;padding:60px 0 36px;position:relative;z-
       <div class="form-row"><label class="form-field full"><span>Комментарий</span><textarea name="Комментарий" id="orderComment" placeholder="Повод, особые пожелания"></textarea></label></div>
       <button type="submit" class="form-submit" id="orderSubmit">Отправить заявку</button>
       <p class="form-note">Свяжемся с вами <b>в течение 3 часов</b> по указанному телефону</p>
+      <p class="form-note" style="margin-top:8px;">
+        💳 После согласования деталей — <b>предоплата 50%</b>, остаток при получении.
+      </p>
     </form>
-    <div class="info-note reveal"><p><b>Одна роза — 75 ₽.</b> Итоговая цена зависит от количества и декора. 🌹</p></div>
+    <div class="info-note reveal"><p><b>Одна роза — 75 ₽.</b> Итоговая цена зависит от количества и декора. 🌹<br><b>Предоплата 50%</b> для запуска заказа, остаток — при получении.</p></div>
   </div></section>
 </main>
 
@@ -876,13 +881,17 @@ footer{background:#1c1417;color:#d5c8cc;padding:60px 0 36px;position:relative;z-
       </ul>
       <div class="city-tags"><span class="city-tag primary">Соликамск</span><span class="city-tag primary">Березники</span><span class="city-tag">Кудымкар</span><span class="city-tag">Александровск</span><span class="city-tag">Красновишерск</span><span class="city-tag">и весь край</span></div>
       </div>
-      <div class="info-card reveal"><div class="info-card-icon">💳</div><h2>Оплата</h2><p class="sub">Оплата при получении</p><ul class="info-list">
-        <li><span class="check accent">✓</span><span><b>Оплата при получении</b> заказа.</span></li>
+      <div class="info-card reveal"><div class="info-card-icon">💳</div><h2>Оплата</h2><p class="sub">Предоплата 50% — для запуска заказа</p><ul class="info-list">
+        <li><span class="check accent">✓</span><span><b>Предоплата 50%</b> — для запуска заказа в работу.</span></li>
+        <li><span class="check accent">✓</span><span><b>Остаток 50%</b> — при получении букета.</span></li>
         <li><span class="check">✓</span><span><b>Перевод на карту.</b></span></li>
         <li><span class="check">✓</span><span><b>По номеру телефона</b> — через СБП.</span></li>
         <li><span class="check">✓</span><span><b>Наличными</b> — для Соликамска и Березников.</span></li>
       </ul>
       <div class="city-tags"><span class="city-tag primary">Карта</span><span class="city-tag primary">СБП</span><span class="city-tag">Наличные</span></div>
+      <p style="font-size:.82rem;color:var(--muted);margin-top:16px;font-weight:300;line-height:1.6;">
+        Без предоплаты заказ не запускается в работу. Предоплата — гарантия того, что мы закупим материалы и соберём букет именно для вас.
+      </p>
       </div>
     </div>
   </div></section>
@@ -1001,6 +1010,7 @@ footer{background:#1c1417;color:#d5c8cc;padding:60px 0 36px;position:relative;z-
       <div class="foot-about">
         <div class="logo"><div class="logo-mark"><img src="https://sun9-39.vkuserphoto.ru/s/v1/ig2/2IUGzBjw6Aze9BUu_dVHzhA0FyMtL2c25AVExbxj7-TKqSCaM0VjRbL4llg0bYk42Cb28le18V6O6TdQdWGLpX_H.jpg?quality=95&as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640,720x720,1080x1080,1254x1254&from=bu&u=eI0um_PKOxa-miIOKuGYnAoV4hIjq9OOBKTyYT9qfIE&cs=1254x0" alt="ATELIER ROSE"></div><div class="logo-text"><b>ATELIER ROSE</b><span>букеты из атласных лент</span></div></div>
         <p>Авторские букеты из атласных лент. Соликамск, Березники, Кудымкар, Александровск, Красновишерск и весь Пермский край.</p>
+        <p style="margin-top:10px;color:#f5d78a;font-weight:500;">💳 Предоплата 50% для запуска заказа</p>
       </div>
       <div><h4>Разделы</h4><ul><li><a href="#ready" data-nav>Готовые букеты</a></li><li><a href="#gallery" data-nav>Портфолио</a></li><li><a href="#about" data-nav>О мастерах</a></li><li><a href="#reviews" data-nav>Отзывы</a></li></ul></div>
       <div><h4>Информация</h4><ul><li><a href="#order" data-nav>Как заказать</a></li><li><a href="#delivery" data-nav>Доставка и оплата</a></li><li><a href="#care" data-nav>Уход</a></li></ul></div>
@@ -1276,7 +1286,7 @@ function renderReadyBouquets() {
         <h3>${title}</h3>
         <div class="desc">${desc}</div>
         <div class="ready-foot">
-          <div class="ready-price">${price} ₽<small>готов к отправке</small></div>
+          <div class="ready-price">${price} ₽<small>предоплата 50%</small></div>
           <a href="#order" class="ready-buy" data-nav>Заказать</a>
         </div>
       </div>
@@ -1527,7 +1537,7 @@ function renderChat() {
   const qc = query(collection(db, 'chats', currentUser.uid, 'messages'), orderBy('createdAt', 'asc'));
   chatUnsub = onSnapshot(qc, (snap) => {
     if (snap.empty) {
-      body.innerHTML = '<div style="text-align:center;color:var(--muted);font-style:italic;padding:40px 20px;font-size:.88rem;">Пока нет сообщений. Напишите первым 👋</div>';
+      body.innerHTML = '<div style="text-align:center;color:var(--muted);font-style:italic;padding:40px 20px;font-size:.88rem;">Пока нет сообщений. Напишите первым 👋<br><br><span style="font-size:.8rem;color:var(--accent);font-style:normal;">💳 Напоминаем: предоплата 50% для запуска заказа</span></div>';
       return;
     }
     body.innerHTML = snap.docs.map(d => {
@@ -1769,6 +1779,7 @@ function renderAdminOrders(orders) {
         <div><b>Дата события</b>${(o.date || '—').replace(/</g,'&lt;')}</div>
         <div><b>Количество роз</b>${(o.qty || '—').replace(/</g,'&lt;')}</div>
         <div><b>Оттенок</b>${(o.color || '—').replace(/</g,'&lt;')}</div>
+        <div><b>Предоплата</b>50% · остаток при получении</div>
       </div>
       ${o.comment ? `<div style="margin-top:14px;padding:14px;background:var(--bg-alt);border-radius:12px;font-size:.88rem;font-weight:300;"><b style="display:block;font-size:.7rem;text-transform:uppercase;color:var(--muted);letter-spacing:.08em;margin-bottom:4px;">Комментарий</b>${o.comment.replace(/</g,'&lt;')}</div>` : ''}
       <div class="admin-order-actions">
