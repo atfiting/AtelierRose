@@ -433,7 +433,6 @@ footer{background:#1c1417;color:#d5c8cc;padding:60px 0 36px;position:relative;z-
   nav a{font-size:.68rem;letter-spacing:.02em}
   nav ul li:nth-child(7){display:none}
 }
-
 @media (max-width:980px){
   :root{--header-h:68px}
   nav ul,.nav-cta,.btn-auth{display:none}
@@ -460,8 +459,10 @@ footer{background:#1c1417;color:#d5c8cc;padding:60px 0 36px;position:relative;z-
   .deadline-banner{grid-template-columns:1fr;gap:14px;padding:30px 26px;text-align:center}
   .admin-stats{grid-template-columns:repeat(2,1fr)}
   .masters-grid{grid-template-columns:1fr}
+  header{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(251,247,244,.98)}
+  .hero-deco{display:none}
+  .reveal{transition:opacity 0.4s ease;transform:none;opacity:1}
 }
-
 @media (max-width:620px){
   .container{padding:0 18px}
   :root{--header-h:64px}
@@ -574,19 +575,11 @@ footer{background:#1c1417;color:#d5c8cc;padding:60px 0 36px;position:relative;z-
   .bouquet-form-wrapper{padding:22px 18px;border-radius:18px}
   .bouquet-form-wrapper .btn-row .btn{width:100%}
 }
-
 @media (max-width:380px){
   .container{padding:0 14px}
   .hero h1{font-size:1.85rem}
   .section-head h2{font-size:1.7rem}
   .inner-hero h1{font-size:1.75rem}
-}
-
-/* ===== УСКОРЕНИЕ ДЛЯ ТЕЛЕФОНОВ ===== */
-@media (max-width: 980px) {
-  header { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; background: #fbf7f4 !important; }
-  .hero-deco { display: none !important; }
-  .reveal { transition: opacity 0.4s ease !important; transform: none !important; opacity: 1 !important; }
 }
 </style>
 </head>
@@ -595,7 +588,7 @@ footer{background:#1c1417;color:#d5c8cc;padding:60px 0 36px;position:relative;z-
 <header>
   <div class="container nav">
     <a href="#home" class="logo">
-      <div class="logo-mark"><img src="https://sun9-39.vkuserphoto.ru/s/v1/ig2/2IUGzBjw6Aze9BUu_dVHzhA0FyMtL2c25AVExbxj7-TKqSCaM0VjRbL4llg0bYk42Cb28le18V6O6TdQdWGLpX_H.jpg?quality=95&as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640,720x720,1080x1080,1254x1254&from=bu&u=eI0um_PKOxa-miIOKuGYnAoV4hIjq9OOBKTyYT9qfIE&cs=1254x0" alt="ATELIER ROSE"></div>
+      <div class="logo-mark"><img src="https://sun9-39.vkuserphoto.ru/s/v1/ig2/2IUGzBjw6Aze9BUu_dVHzhA0FyMtL2c25AVExbxj7-TKqSCaM0VjRbL4llg0bYk42Cb28le18V6O6TdQdWGLpX_H.jpg?quality=95&as=160x160,240x240,360x360,480x480&from=bu&u=eI0um_PKOxa-miIOKuGYnAoV4hIjq9OOBKTyYT9qfIE&cs=480x0" alt="ATELIER ROSE"></div>
       <div class="logo-text"><b>ATELIER ROSE</b><span>букеты из атласных лент</span></div>
     </a>
     <nav>
@@ -806,7 +799,15 @@ footer{background:#1c1417;color:#d5c8cc;padding:60px 0 36px;position:relative;z-
       <div class="step reveal"><div class="step-num">04</div><h3>Получаете букет</h3><p>Готовим за 5–7 дней. Доставка по краю бесплатно. Остаток — при получении.</p></div>
     </div>
     <div class="contacts-title reveal"><div class="eyebrow">Заявка на букет</div><h2>Заполните форму</h2><div class="divider center"></div></div>
-    <form class="form-wrapper reveal" id="orderForm">
+    
+    <!-- Блок с требованием входа -->
+    <div id="orderAuthNotice" style="display:none; text-align:center; padding:40px; background:#fff; border-radius:24px; box-shadow:var(--shadow); margin-bottom:30px;">
+      <h3 style="font-size:1.5rem; margin-bottom:12px;">Для заказа нужно войти</h3>
+      <p style="color:var(--muted); margin-bottom:24px;">Чтобы оставить заявку, зарегистрируйтесь или войдите в аккаунт.</p>
+      <button class="btn btn-primary" onclick="openAuth('login')">Войти / Регистрация</button>
+    </div>
+
+    <form class="form-wrapper reveal" id="orderForm" style="display:none;">
       <div class="form-row">
         <label class="form-field"><span>Ваше имя <b class="req">*</b></span><input type="text" id="orderName" placeholder="Как к вам обращаться" required></label>
         <label class="form-field"><span>Телефон <b class="req">*</b></span><input type="tel" id="orderPhone" placeholder="+7 ___ ___-__-__" required></label>
@@ -1231,6 +1232,20 @@ let isAdmin = false;
 onAuthStateChanged(auth, (user) => {
   currentUser = user;
   isAdmin = user && user.email === ADMIN_EMAIL;
+  
+  // Показ/скрытие формы заказа в зависимости от входа
+  const orderForm = $('#orderForm');
+  const orderAuthNotice = $('#orderAuthNotice');
+  if (orderForm && orderAuthNotice) {
+    if (user) {
+      orderForm.style.display = 'block';
+      orderAuthNotice.style.display = 'none';
+    } else {
+      orderForm.style.display = 'none';
+      orderAuthNotice.style.display = 'block';
+    }
+  }
+
   const nav = $('#navActions');
   const dropdown = $('#userDropdown');
   $('#navAdminLi').style.display = isAdmin ? 'block' : 'none';
@@ -1449,11 +1464,12 @@ function renderReviews() {
     return;
   }
   revGrid.innerHTML = allReviews.map(r => {
-    const isOwner = currentUser && r.userId === currentUser.uid;
+    // УДАЛЕНИЕ ДОСТУПНО ТОЛЬКО АДМИНУ
+    const canDelete = isAdmin; 
     const name = r.userName || 'Клиент';
     const text = (r.text || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    return `<div class="rev reveal in ${isOwner ? 'rev-owner' : ''}" data-id="${r.id}">
-      ${isOwner ? '<button class="rev-del" title="Удалить">✕</button>' : ''}
+    return `<div class="rev reveal in ${canDelete ? 'rev-owner' : ''}" data-id="${r.id}">
+      ${canDelete ? '<button class="rev-del" title="Удалить">✕</button>' : ''}
       <div class="rev-stars">${starsHtml(r.rating || 5)}</div>
       <p>${text}</p>
       <div class="rev-author"><div class="rev-ava">${initials(name)}</div><div><b>${name}</b><span>${(r.userCity || 'Пермский край')}</span></div></div>
@@ -1462,7 +1478,7 @@ function renderReviews() {
   revGrid.querySelectorAll('.rev-del').forEach(btn => {
     btn.addEventListener('click', async (e) => {
       const id = e.target.closest('.rev').dataset.id;
-      if (!confirm('Удалить ваш отзыв?')) return;
+      if (!confirm('Удалить этот отзыв?')) return;
       try {
         await deleteDoc(doc(db, 'reviews', id));
         toast('Отзыв удалён', 'success');
@@ -1599,6 +1615,11 @@ const orderForm = $('#orderForm');
 if (orderForm) {
   orderForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+    if (!currentUser) {
+      toast('Для заказа нужно войти в аккаунт!', 'error');
+      openAuth('login');
+      return;
+    }
     const btn = $('#orderSubmit');
     btn.disabled = true; btn.textContent = 'Отправляю...';
     try {
